@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ClutchVerse Community - Home</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <nav class="navbar">
+        <div class="logo">
+            <a href="index.html">
+                <img src="img/CV NEW LOGO.jpeg" alt="ClutchVerse Community" class="logo-img">
+            </a>
+        </div>
+        <div class="nav-links" id="navLinks">
+            <a href="index.html" class="active">Home</a>
+            <a href="login.html" id="loginLink">Login</a>
+            <a href="signup.html" id="signupLink">Sign Up</a>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <div class="banner-container">
+            <img src="img/ytbanner.jpg" alt="ClutchVerse Banner" class="hero-banner">
+        </div>
+
+        <div class="hero-content">
+            <h1>🎮 Welcome to Clutch Verse 🚀</h1>
+            <p>Yahan milta hai gaming ka full power combo — from intense battles to creative worlds!</p>
+            <p class="highlight">💥 High-quality gameplay, insane clutches, aur next-level gaming vibes 💥</p>
+        </div>
+    </header>
+
+    <section class="social-grid">
+        <div class="card yt-card">
+            <h3>YouTube</h3>
+            <p>Subscribe for high-quality gameplay, shorts, and insane clutches.</p>
+            <a href="http://www.youtube.com/@clutchverse4182" target="_blank" class="card-btn">Subscribe Channel</a>
+        </div>
+
+        <div class="card dc-card">
+            <h3>Discord Server</h3>
+            <p>Join the ClutchVerse ARMY, chat with the community, and game together.</p>
+            <a href="https://discord.gg/BAPmgmmM8R" target="_blank" class="card-btn">Join Discord</a>
+        </div>
+
+        <div class="card ig-card">
+            <h3>Instagram</h3>
+            <p>Follow for daily gaming clips, updates, and behind-the-scenes action.</p>
+            <a href="https://www.instagram.com/clutchverse.4182/" target="_blank" class="card-btn">Follow Reels</a>
+        </div>
+    </section>
+
+    <section class="games-section">
+        <h2>🔥 What You’ll Find Here</h2>
+        <div class="games-grid">
+            <div class="game-item"><span>⛏️</span> <strong>Minecraft</strong>
+                <p>Survival, Modded, Lifestyle Builds & Real-World Scenes</p>
+            </div>
+            <div class="game-item"><span>🔫</span> <strong>Action Mobile</strong>
+                <p>Free Fire, BGMI & COD Mobile — Action-packed matches</p>
+            </div>
+            <div class="game-item"><span>🎯</span> <strong>Valorant</strong>
+                <p>Sharp aim, smart tactics & clutch moments</p>
+            </div>
+            <div class="game-item"><span>🚗</span> <strong>Forza Horizon 5</strong>
+                <p>High-speed thrills & insane rides</p>
+            </div>
+            <div class="game-item"><span>🕵️</span> <strong>Fun & Chaos</strong>
+                <p>Among Us & Stumble Guys — Pure fun, chaos & laughs</p>
+            </div>
+            <div class="game-item"><span>🏙️</span> <strong>GTA V</strong>
+                <p>Open-world adventures like never before</p>
+            </div>
+        </div>
+        <p class="more-games">🎮 Aur bhi bahut saare trending games!</p>
+    </section>
+
+    <footer class="home-footer">
+        <p>💡 Chahe tum ho casual gamer, pro player, ya sirf entertainment ke liye aaye ho — <strong>Yahan sabke liye kuch na kuch hai!</strong></p>
+        <p class="cta-text">⚡ Subscribe karo Clutch Verse ko aur ban jao is gaming universe ka part — jahan har video ek naya adventure hai! ✨</p>
+    </footer>
+
+    <footer class="site-footer">
+        <div class="footer-content">
+            <p>&copy; 2026 ClutchVerse Community. All Rights Reserved.</p>
+            <div class="footer-socials">
+                <a href="http://www.youtube.com/@clutchverse4182" target="_blank"><img src="img/ytlogoreal.png" alt="YouTube" class="footer-icon"></a>
+                <a href="https://discord.gg/BAPmgmmM8R" target="_blank"><img src="img/dc.png" alt="Discord" class="footer-icon"></a>
+                <a href="https://www.instagram.com/clutchverse.4182/" target="_blank"><img src="img/ig.jpg" alt="Instagram" class="footer-icon"></a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const isLoggedIn = localStorage.getItem('isLoggedIn');
+            const currentUser = localStorage.getItem('currentUser');
+
+            if (isLoggedIn === 'true' && currentUser) {
+                // 1. Updating Header Display Elements
+                const heroHeadline = document.querySelector('.hero h1');
+                if (heroHeadline) {
+                    heroHeadline.innerHTML = `🎮 Welcome, ${currentUser}! 🚀`;
+                }
+
+                // 2. Modifying Top Navigation Bar Structure
+                const loginLink = document.getElementById('loginLink');
+                const signupLink = document.getElementById('signupLink');
+                
+                if (loginLink) loginLink.style.display = 'none';
+                if (signupLink) signupLink.style.display = 'none';
+
+                // Injecting a safe dynamic operational Logout button
+                const navLinksContainer = document.getElementById('navLinks');
+                if (navLinksContainer) {
+                    const logoutBtn = document.createElement('a');
+                    logoutBtn.href = '#';
+                    logoutBtn.id = 'logoutAction';
+                    logoutBtn.style.color = '#e1306c';
+                    logoutBtn.textContent = 'Logout';
+                    
+                    logoutBtn.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        localStorage.removeItem('isLoggedIn');
+                        localStorage.removeItem('currentUser');
+                        alert('Logged out safely!');
+                        window.location.reload();
+                    });
+                    
+                    navLinksContainer.appendChild(logoutBtn);
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>
